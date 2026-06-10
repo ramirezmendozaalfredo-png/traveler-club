@@ -1,226 +1,571 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Traveler Club</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traveler-Club | Creamos las mejores experiencias</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables de Color Estilo Premium */
+        :root {
+            --primary: #002347;       /* Azul marino profundo (Header/Footer original) */
+            --accent: #25D366;        /* Verde WhatsApp vibrante */
+            --text-dark: #1e293b;     /* Gris oscuro para legibilidad */
+            --text-light: #64748b;    /* Gris claro */
+            --white: #ffffff;
+            --overlay: rgba(0, 0, 0, 0.4);
+        }
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #ffffff;
-  color: #222;
-  scroll-behavior: smooth; 
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-header {
-  background: #000;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background-color: #f1f5f9;
+            line-height: 1.6;
+        }
 
-header .logo-img {
-  max-height: 50px;
-  width: auto;
-  margin-bottom: 5px;
-}
+        /* 1. HEADER - SOLICITADO: Logo y Eslogan más grandes, lado izquierdo, fondo blanco */
+        header {
+            background-color: var(--white);
+            padding: 20px 5%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-header p {
-  margin: 0;
-  font-size: 14px;
-  color: #ccc;
-  font-style: italic;
-}
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-.hero {
-  min-height: 80vh;
-  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('hero.jpg') center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-  padding: 40px 20px;
-  box-sizing: border-box;
-}
+        .brand-box {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
 
-.hero-content {
-  background: rgba(0, 0, 0, 0.65);
-  padding: 40px 30px;
-  border-radius: 15px;
-  max-width: 600px;
-  width: 100%;
-}
+        .logo-img {
+            height: 70px; /* Más grande y visible */
+            width: auto;
+            object-fit: contain;
+        }
 
-.hero h1 {
-  font-size: clamp(32px, 5vw, 48px);
-  margin: 0 0 15px 0;
-}
+        .slogan-box {
+            border-left: 3px solid #ff6b00; /* Acento naranja sutil */
+            padding-left: 15px;
+        }
 
-.hero p {
-  font-size: clamp(16px, 2vw, 20px);
-  margin: 0 0 25px 0;
-  line-height: 1.5;
-}
+        .slogan-box h1 {
+            font-size: 24px;
+            color: var(--primary);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
 
-.btn {
-  display: inline-block;
-  padding: 15px 35px;
-  background: #25D366;
-  color: #ffffff !important;
-  text-decoration: none;
-  border-radius: 10px;
-  font-weight: bold;
-  font-size: 18px;
-  transition: background 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-}
+        .slogan-box p {
+            font-size: 14px;
+            color: var(--text-light);
+            font-style: italic;
+            font-weight: 400;
+        }
 
-.btn:hover {
-  background: #20ba5a;
-  transform: translateY(-2px);
-}
+        /* 2. HERO SECTION - IGUAL A TU IMAGEN pero optimizada */
+        .hero {
+            position: relative;
+            height: 85vh;
+            min-height: 500px;
+            background-image: linear-gradient(var(--overlay), var(--overlay)), url('hero.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
 
-.btn:active {
-  transform: translateY(0);
-}
+        .hero-card {
+            background-color: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 50px 60px;
+            border-radius: 16px;
+            max-width: 750px;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-.services {
-  padding: 60px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
-  box-sizing: border-box;
-}
+        .hero-card h2 {
+            color: var(--white);
+            font-size: 52px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
 
-.services h2 {
-  font-size: 36px;
-  margin-bottom: 40px;
-  position: relative;
-}
+        .hero-card p {
+            color: #f8fafc;
+            font-size: 20px;
+            margin-bottom: 35px;
+            font-weight: 400;
+        }
 
-.services h2::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 4px;
-  background: #25D366;
-  margin: 10px auto 0 auto;
-  border-radius: 2px;
-}
+        .btn-reserve {
+            display: inline-block;
+            background-color: #4ade80; /* El verde brillante exacto de tu captura */
+            color: var(--primary);
+            padding: 16px 45px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(74, 222, 128, 0.4);
+        }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
-}
+        .btn-reserve:hover {
+            transform: translateY(-2px);
+            background-color: #22c55e;
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.6);
+        }
 
-.card {
-  background: #f9f9f9;
-  padding: 30px 20px;
-  border-radius: 15px;
-  border: 1px solid #eee;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+        /* 3. SECCIÓN PROTECCIÓN - SOLICITADO: Asistencia Médica y Concierge */
+        .protection-badge {
+            background: linear-gradient(135deg, #002347 0%, #003366 100%);
+            color: var(--white);
+            padding: 25px 5%;
+            text-align: center;
+        }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-}
+        .protection-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
 
-.card h3 {
-  margin-top: 0;
-  font-size: 22px;
-}
+        .protection-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 18px;
+            font-weight: 600;
+        }
 
-footer {
-  background: #000;
-  color: white;
-  text-align: center;
-  padding: 40px 20px;
-  margin-top: 60px;
-}
+        .protection-item i {
+            font-size: 26px;
+            color: #ffaa00; /* Dorado de seguridad */
+        }
 
-footer .footer-logo {
-  max-height: 60px;
-  width: auto;
-  margin-bottom: 10px;
-}
+        /* 4. SERVICIOS CON ICONOS - SOLICITADO */
+        .sections-padding {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-footer p {
-  margin: 8px 0;
-  font-size: 15px;
-  color: #bbb;
-}
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 50px;
+            font-weight: 700;
+            position: relative;
+        }
 
-footer a {
-  color: #25D366;
-  text-decoration: none;
-}
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: #ff6b00;
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
 
-footer a:hover {
-  text-decoration: underline;
-}
-</style>
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #f1f5f9;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .service-card i {
+            font-size: 42px;
+            color: #00509d;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* 5. DESTINOS CON IMÁGENES - SOLICITADO: Caribe, Disney, Crucero, Europa, Asia */
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .destination-card {
+            position: relative;
+            height: 380px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .destination-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .destination-card:hover .destination-img {
+            transform: scale(1.1);
+        }
+
+        .destination-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            padding: 30px 25px;
+            color: var(--white);
+        }
+
+        .destination-info h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .destination-info p {
+            font-size: 14px;
+            color: #e2e8f0;
+        }
+
+        /* 6. RESPALDO INDUSTRIAL - SOLICITADO: Expedia TAAP y Hotelbeds */
+        .partners-section {
+            background-color: var(--white);
+            padding: 60px 5%;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .partners-text {
+            max-width: 800px;
+            margin: 0 auto 35px auto;
+            font-size: 18px;
+            color: var(--text-dark);
+        }
+
+        .partners-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 80px;
+            flex-wrap: wrap;
+        }
+
+        .partner-logo-sim {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .partner-logo-sim.expedia { color: #003554; }
+        .partner-logo-sim.hotelbeds { color: #e31b23; }
+
+        /* 7. SECCIÓN DE CONTACTO - SOLICITADO: E-mail y WhatsApp más grandes */
+        .contact-section {
+            background-color: #f8fafc;
+            text-align: center;
+        }
+
+        .contact-container {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background-color: var(--white);
+            padding: 25px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .contact-link.ws i { color: #25D366; font-size: 36px; }
+        .contact-link.mail i { color: #00509d; font-size: 32px; }
+
+        .contact-link span {
+            font-size: 24px; 
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* 8. FOOTER - IGUAL AL ESTILO CORPORATIVO ORIGINAL */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 40px 5% 20px 5%;
+            font-size: 14px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer-logo-box span {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-rights {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        /* Responsividad Móvil */
+        @media (max-width: 768px) {
+            .header-container { flex-direction: column; text-align: center; gap: 15px; }
+            .brand-box { flex-direction: column; gap: 10px; }
+            .slogan-box { border-left: none; padding-left: 0; }
+            .hero-card { padding: 35px 25px; }
+            .hero-card h2 { font-size: 36px; }
+            .hero-card p { font-size: 16px; }
+            .contact-link span { font-size: 18px; }
+            .partners-logos { gap: 40px; }
+            .footer-container { flex-direction: column; text-align: center; }
+        }
+    </style>
 </head>
 <body>
 
-<header>
-  <img src="logo.png" alt="Traveler Club" class="logo-img">
-  <p>Creamos las mejores experiencias</p>
-</header>
+    <header>
+        <div class="header-container">
+            <div class="brand-box">
+                <img src="logo.png" alt="Traveler-Club" class="logo-img">
+                <div class="slogan-box">
+                    <h1>traveler-club</h1>
+                    <p>Creamos las mejores experiencias</p>
+                </div>
+            </div>
+        </div>
+    </header>
 
-<section class="hero">
-  <div class="hero-content">
-    <h1>Viaja sin límites</h1>
-    <p>Hospedajes, vuelos, paquetes, cruceros, autos y tours.</p>
-    <a class="btn" href="https://wa.me/525620920944" target="_blank" rel="noopener noreferrer">
-      Reservar ahora
-    </a>
-  </div>
-</section>
+    <section class="hero">
+        <div class="hero-card">
+            <h2>Viaja sin límites</h2>
+            <p>Hospedajes, vuelos, paquetes, cruceros, autos y tours.</p>
+            <a href="https://wa.me/525620920144" class="btn-reserve" target="_blank">Reservar ahora</a>
+        </div>
+    </section>
 
-<section class="services">
-  <h2>Nuestros Servicios</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>✈️ Vuelos</h3>
-      <p>Las mejores tarifas nacionales e internacionales.</p>
-    </div>
-    <div class="card">
-      <h3>🏨 Hospedajes</h3>
-      <p>Hoteles y resorts para todos los presupuestos.</p>
-    </div>
-    <div class="card">
-      <h3>🚢 Cruceros</h3>
-      <p>Experiencias únicas alrededor del mundo.</p>
-    </div>
-    <div class="card">
-      <h3>🚘 Autos</h3>
-      <p>Renta de autos segura y rápida.</p>
-    </div>
-    <div class="card">
-      <h3>🌴 Tours</h3>
-      <p>Aventuras y experiencias inolvidables.</p>
-    </div>
-    <div class="card">
-      <h3>🎒 Paquetes</h3>
-      <p>Todo incluido para tus vacaciones perfectas.</p>
-    </div>
-  </div>
-</section>
+    <section class="protection-badge">
+        <div class="protection-container">
+            <div class="protection-item">
+                <i class="fa-solid fa-user-shield"></i>
+                <span>Protegidos con Asistencia Médica Integral</span>
+            </div>
+            <div class="protection-item">
+                <i class="fa-solid fa-bell-concierge"></i>
+                <span>Servicio de Concierge Exclusivo 24/7</span>
+            </div>
+        </div>
+    </section>
 
-<footer>
-  <img src="logo.png" alt="Traveler Club" class="footer-logo">
-  <p><a href="mailto:contacto@traveler-club.com">contacto@traveler-club.com</a></p>
-  <p>WhatsApp: <a href="https://wa.me/525620920944" target="_blank" rel="noopener noreferrer">+52 56 2092 0944</a></p>
-</footer>
+    <section class="sections-padding">
+        <h2 class="section-title">Servicios que Ofrecemos</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fa-solid fa-hotel"></i>
+                <h3>Hospedaje</h3>
+                <p>Hoteles, resorts y villas de primer nivel en todo el mundo.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-plane-departure"></i>
+                <h3>Vuelos</h3>
+                <p>Conexiones aéreas nacionales e internacionales al mejor costo.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-cubes"></i>
+                <h3>Paquetes</h3>
+                <p>Planes completos todo incluido para viajar sin preocupaciones.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-ship"></i>
+                <h3>Cruceros</h3>
+                <p>Travesías marítimas inolvidables por las mejores navieras.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-car"></i>
+                <h3>Autos</h3>
+                <p>Renta de vehículos garantizados en cualquier destino.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <h3>Tours</h3>
+                <p>Excursiones guiadas y actividades locales únicas.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-shield-heart"></i>
+                <h3>Seguros</h3>
+                <p>Cobertura y tranquilidad total ante cualquier eventualidad.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="sections-padding" style="background-color: #f8fafc; max-width: 100%;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">Destinos de Clase Mundial</h2>
+            <div class="destinations-grid">
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&w=600&q=80" alt="Caribe" class="destination-img">
+                    <div class="destination-info">
+                        <h3>Caribe</h3>
+                        <p>Playas paradisíacas de arena blanca y mar turquesa.</p>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1560089000-7433a4ebbd64?auto=format&fit=crop&w=600&q=80" alt="Disney" class="destination-img">
+                    <div class="destination-info">
+                        <h3>Disney</h3>
+                        <p>Magia, diversión y aventuras inolvidables en familia.</p>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1599640842228-854998793475?auto=format&fit=crop&w=600&q=80" alt="Cruceros" class="destination-img">
+                    <div class="destination-info">
+                        <h3>Cruceros</h3>
+                        <p>Explora múltiples destinos a bordo de resorts flotantes.</p>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=600&q=80" alt="Europa" class="destination-img">
+                    <div class="destination-info">
+                        <h3>Europa</h3>
+                        <p>Historia, cultura y paisajes de ensueño en el viejo continente.</p>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1535139262971-c51845709a48?auto=format&fit=crop&w=600&q=80" alt="Asia" class="destination-img">
+                    <div class="destination-info">
+                        <h3>Asia</h3>
+                        <p>Tradición milenaria mezclada con la modernidad del futuro.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="partners-section">
+        <h2 class="section-title">El Mejor Respaldo</h2>
+        <p class="partners-text">
+            Estamos soportados por los mejores en la industria: <strong>Expedia TAAP</strong> y <strong>Hotelbeds</strong>, lo que nos permite darte más opciones, mejores precios y experiencias de clase mundial.
+        </p>
+        <div class="partners-logos">
+            <div class="partner-logo-sim expedia">
+                <i class="fa-solid fa-globe"></i> Expedia TAAP
+            </div>
+            <div class="partner-logo-sim hotelbeds">
+                <i class="fa-solid fa-bed"></i> hotelbeds
+            </div>
+        </div>
+    </section>
+
+    <section class="sections-padding contact-section">
+        <h2 class="section-title">¡Planea tu Próximo Viaje Hoy!</h2>
+        <div class="contact-container">
+            <a href="https://wa.me/525620920144" class="contact-link ws" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>+52 562 092 0144</span>
+            </a>
+            <a href="mailto:contacto@traveler-club.com" class="contact-link mail">
+                <i class="fa-solid fa-envelope"></i>
+                <span>contacto@traveler-club.com</span>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo-box">
+                <span>traveler-club</span>
+            </div>
+            <div>
+                <p><i class="fa-solid fa-shield-halved" style="color: #ffaa00; margin-right: 8px;"></i> Respaldado globalmente</p>
+            </div>
+        </div>
+        <p class="footer-rights">&copy; 2026 traveler-club. Todos los derechos reservados. Creamos las mejores experiencias.</p>
+    </footer>
 
 </body>
 </html>
