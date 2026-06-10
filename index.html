@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Traveler Club</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+  color: #222;
+  scroll-behavior: smooth; 
+}
+
+header {
+  background: #000;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+header .logo-img {
+  max-height: 50px;
+  width: auto;
+  margin-bottom: 5px;
+}
+
+header p {
+  margin: 0;
+  font-size: 14px;
+  color: #ccc;
+  font-style: italic;
+}
+
+.hero {
+  min-height: 80vh;
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('hero.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.hero-content {
+  background: rgba(0, 0, 0, 0.65);
+  padding: 40px 30px;
+  border-radius: 15px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.hero h1 {
+  font-size: clamp(32px, 5vw, 48px);
+  margin: 0 0 15px 0;
+}
+
+.hero p {
+  font-size: clamp(16px, 2vw, 20px);
+  margin: 0 0 25px 0;
+  line-height: 1.5;
+}
+
+.btn {
+  display: inline-block;
+  padding: 15px 35px;
+  background: #25D366;
+  color: #ffffff !important;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 18px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.btn:hover {
+  background: #20ba5a;
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.services {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.services h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.services h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #25D366;
+  margin: 10px auto 0 auto;
+  border-radius: 2px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: #f9f9f9;
+  padding: 30px 20px;
+  border-radius: 15px;
+  border: 1px solid #eee;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.card h3 {
+  margin-top: 0;
+  font-size: 22px;
+}
+
+footer {
+  background: #000;
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 60px;
+}
+
+footer .footer-logo {
+  max-height: 60px;
+  width: auto;
+  margin-bottom: 10px;
+}
+
+footer p {
+  margin: 8px 0;
+  font-size: 15px;
+  color: #bbb;
+}
+
+footer a {
+  color: #25D366;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <img src="logo.png" alt="Traveler Club" class="logo-img">
+  <p>Creamos las mejores experiencias</p>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Viaja sin límites</h1>
+    <p>Hospedajes, vuelos, paquetes, cruceros, autos y tours.</p>
+    <a class="btn" href="https://wa.me/525620920944" target="_blank" rel="noopener noreferrer">
+      Reservar ahora
+    </a>
+  </div>
+</section>
+
+<section class="services">
+  <h2>Nuestros Servicios</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>✈️ Vuelos</h3>
+      <p>Las mejores tarifas nacionales e internacionales.</p>
+    </div>
+    <div class="card">
+      <h3>🏨 Hospedajes</h3>
+      <p>Hoteles y resorts para todos los presupuestos.</p>
+    </div>
+    <div class="card">
+      <h3>🚢 Cruceros</h3>
+      <p>Experiencias únicas alrededor del mundo.</p>
+    </div>
+    <div class="card">
+      <h3>🚘 Autos</h3>
+      <p>Renta de autos segura y rápida.</p>
+    </div>
+    <div class="card">
+      <h3>🌴 Tours</h3>
+      <p>Aventuras y experiencias inolvidables.</p>
+    </div>
+    <div class="card">
+      <h3>🎒 Paquetes</h3>
+      <p>Todo incluido para tus vacaciones perfectas.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img src="logo.png" alt="Traveler Club" class="footer-logo">
+  <p><a href="mailto:contacto@traveler-club.com">contacto@traveler-club.com</a></p>
+  <p>WhatsApp: <a href="https://wa.me/525620920944" target="_blank" rel="noopener noreferrer">+52 56 2092 0944</a></p>
+</footer>
+
+</body>
+</html>
