@@ -59,8 +59,11 @@ export async function onRequestPost({ request, env }) {
   // Optional private Apps Script webhook. It appends one row to Google Sheets.
   if (env.SHEETS_WEBHOOK_URL && env.SHEETS_WEBHOOK_SECRET) {
     try {
-      await fetch(env.SHEETS_WEBHOOK_URL, {
-        method: "POST", headers: { "Content-Type": "application/json", "X-Traveler-Secret": env.SHEETS_WEBHOOK_SECRET },
+      const webhookUrl = new URL(env.SHEETS_WEBHOOK_URL);
+      // Apps Script Web Apps expose query parameters through e.parameter.
+      webhookUrl.searchParams.set("token", env.SHEETS_WEBHOOK_SECRET);
+      await fetch(webhookUrl.toString(), {
+        method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify(lead)
       });
     } catch (_) { /* D1 remains the source of truth; Sheets can be retried later. */ }
