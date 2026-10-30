@@ -297,6 +297,12 @@
             font-weight: bold;
             font-size: 16px;
         }
+    
+        .btn-quote { background:#f28b30; color:#fff; padding:12px 28px; border-radius:25px; text-decoration:none; font-weight:700; display:inline-block; margin-left:10px; }
+        .quote-strip { background:#eef3f8; padding:42px 8%; text-align:center; }
+        .quote-strip h3 { color:#1e3a5f; font-size:27px; margin-bottom:10px; }
+        .quote-strip p { color:#536273; margin:0 auto 22px; max-width:650px; line-height:1.6; }
+        @media(max-width:650px) { .hero-box { margin:18px; padding:28px 22px; } .hero-box h2 {font-size:32px;} .info-ribbon {flex-direction:column; align-items:center; gap:10px;} .btn-quote {margin:12px 0 0;} }
     </style>
 </head>
 <body>
@@ -315,7 +321,7 @@
         <div class="hero-box">
             <h2>Viaja sin límites</h2>
             <p>Hospedajes, vuelos, paquetes, cruceros, autos y tours.</p>
-            <a href="https://wa.me/525620920944" target="_blank" class="btn-reserve">Reservar ahora</a>
+            <a href="/cotizar/" class="btn-reserve">Solicitar cotización</a>
         </div>
     </section>
 
@@ -410,6 +416,13 @@
             </div>
 
         </div>
+    </section>
+
+
+    <section class="quote-strip">
+        <h3>Diseñemos tu próximo viaje</h3>
+        <p>Cuéntanos a dónde quieres viajar, cuándo y cuántas personas te acompañan. Prepararemos una propuesta de acuerdo con tus necesidades.</p>
+        <a href="/cotizar/" class="btn-reserve">Cotiza tu viaje aquí</a>
     </section>
 
     <section class="partners-section">
