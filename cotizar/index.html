@@ -22,7 +22,7 @@ form{background:#fff;padding:32px;border-radius:18px;box-shadow:0 8px 30px rgba(
 </header>
 <main>
  <div class="intro"><div class="eyebrow">Tu próximo viaje comienza aquí</div><h1>Solicita tu cotización</h1><p>Comparte los detalles de tu viaje. Nuestro equipo revisará tu solicitud y se pondrá en contacto contigo para preparar una propuesta.</p></div>
- <form id="leadForm">
+ <form id="leadForm">\n  <div style="position:absolute;left:-10000px" aria-hidden="true"><label for="website">No llenar</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
   <div class="grid">
    <div class="field"><label for="nombre">Nombre completo *</label><input id="nombre" name="nombre" autocomplete="name" required maxlength="120" placeholder="Tu nombre"></div>
    <div class="field"><label for="whatsapp">WhatsApp con clave de país *</label><input id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" required maxlength="25" placeholder="+52 56 0000 0000"></div>
@@ -38,26 +38,34 @@ form{background:#fff;padding:32px;border-radius:18px;box-shadow:0 8px 30px rgba(
    <label class="check"><input type="checkbox" id="waConsent"><span>Autorizo que Traveler Club me contacte por WhatsApp respecto a esta solicitud. (Opcional)</span></label>
   </div>
   <button class="submit" type="submit">Enviar solicitud de cotización</button>
-  <p class="note">Los datos se utilizarán únicamente para dar seguimiento a tu solicitud. Al enviar, se abrirá tu aplicación de correo para que puedas remitir los detalles a contacto@traveler-club.com. El registro automático y el acuse de recibido se habilitarán al conectar el sistema seguro de gestión.</p>
+  <p class="note">Al enviar, registraremos tu solicitud para que el equipo de Traveler Club pueda darle seguimiento. Recibirás un correo de confirmación cuando el servicio de correo esté configurado y activo.</p>
   <div class="status" id="status" role="status"></div>
  </form>
 </main>
 <footer>Traveler Club · Cancún, Quintana Roo · RNT-26-QROO-001681</footer>
-<script>
-const form=document.getElementById('leadForm'), start=document.getElementById('inicio'), end=document.getElementById('fin'), statusBox=document.getElementById('status');
+<script>\nconst form=document.getElementById('leadForm'), start=document.getElementById('inicio'), end=document.getElementById('fin'), statusBox=document.getElementById('status'), submitButton=form.querySelector('button[type="submit"]');
 start.addEventListener('change',()=>{end.min=start.value;if(end.value&&end.value<start.value)end.value='';});
-form.addEventListener('submit',e=>{
+form.addEventListener('submit',async e=>{
  e.preventDefault();
  if(!form.reportValidity())return;
  if(end.value<start.value){end.setCustomValidity('La fecha de regreso no puede ser anterior a la fecha de inicio.');end.reportValidity();end.setCustomValidity('');return;}
- const d=new FormData(form), rows=[...d.entries()].map(([k,v])=>k+': '+v);
- rows.push('Consentimiento WhatsApp: '+(document.getElementById('waConsent').checked?'Sí':'No'));
- const subject=encodeURIComponent('Nueva solicitud de cotización - '+d.get('nombre'));
- const body=encodeURIComponent('Nueva solicitud recibida desde traveler-club.com/cotizar\n\n'+rows.join('\n')+'\n\nFavor de dar seguimiento al prospecto.');
- statusBox.style.display='block';
- statusBox.textContent='Se abrirá tu aplicación de correo con la solicitud preparada. Revisa y envía el mensaje para que nuestro equipo pueda contactarte. Esta versión aún no envía acuses automáticos ni guarda el registro en una base de datos.';
- window.location.href='mailto:contacto@traveler-club.com?subject='+subject+'&body='+body;
-});
-</script>
+ if(document.getElementById('website').value)return;
+ const data=Object.fromEntries(new FormData(form).entries());
+ delete data.website;
+ data.privacy_consent=document.getElementById('privacidad').checked;
+ data.whatsapp_consent=document.getElementById('waConsent').checked;
+ statusBox.style.display='block';statusBox.textContent='Enviando tu solicitud de forma segura…';submitButton.disabled=true;submitButton.textContent='Enviando…';
+ try{
+  const response=await fetch('/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+  const result=await response.json();
+  if(!response.ok)throw new Error(result.error||'No pudimos registrar tu solicitud. Inténtalo nuevamente.');
+  form.reset();end.min='';
+  statusBox.textContent='¡Gracias! Tu solicitud quedó registrada. En breve nos pondremos en contacto contigo. Si no recibes el correo de confirmación, revisa tu carpeta de spam.';
+  statusBox.style.background='#eaf7ef';statusBox.style.color='#245b38';
+ }catch(error){
+  statusBox.textContent=error.message||'No fue posible enviar la solicitud. Inténtalo más tarde o escríbenos a contacto@traveler-club.com.';
+  statusBox.style.background='#fff0ed';statusBox.style.color='#8a3024';
+ }finally{submitButton.disabled=false;submitButton.textContent='Enviar solicitud de cotización';}
+});\n</script>
 </body>
 </html>
