@@ -62,11 +62,21 @@ export async function onRequestPost({ request, env }) {
       const webhookUrl = new URL(env.SHEETS_WEBHOOK_URL);
       // Apps Script Web Apps expose query parameters through e.parameter.
       webhookUrl.searchParams.set("token", env.SHEETS_WEBHOOK_SECRET);
-      await fetch(webhookUrl.toString(), {
-        method: "POST", headers: { "Content-Type": "application/json" },
+      const sheetsResponse = await fetch(webhookUrl.toString(), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(lead)
       });
-    } catch (_) { /* D1 remains the source of truth; Sheets can be retried later. */ }
+      const sheetsResponseText = await sheetsResponse.text();
+      if (!sheetsResponse.ok) {
+        console.error("Google Sheets webhook HTTP error:", sheetsResponse.status, sheetsResponseText.slice(0, 1000));
+      } else {
+        console.log("Google Sheets webhook response:", sheetsResponse.status, sheetsResponseText.slice(0, 1000));
+      }
+    } catch (error) {
+      console.error("Google Sheets webhook request failed:", error?.message || String(error));
+      /* D1 remains the source of truth; Sheets can be retried later. */
+    }
   }
 
   return json({ ok: true, id, email_status: lead.email_status }, 201);
