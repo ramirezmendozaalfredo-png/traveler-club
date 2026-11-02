@@ -22,7 +22,8 @@ form{background:#fff;padding:32px;border-radius:18px;box-shadow:0 8px 30px rgba(
 </header>
 <main>
  <div class="intro"><div class="eyebrow">Tu próximo viaje comienza aquí</div><h1>Solicita tu cotización</h1><p>Comparte los detalles de tu viaje. Nuestro equipo revisará tu solicitud y se pondrá en contacto contigo para preparar una propuesta.</p></div>
- <form id="leadForm">\n  <div style="position:absolute;left:-10000px" aria-hidden="true"><label for="website">No llenar</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+ <form id="leadForm">
+  <div style="position:absolute;left:-10000px" aria-hidden="true"><label for="website">No llenar</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
   <div class="grid">
    <div class="field"><label for="nombre">Nombre completo *</label><input id="nombre" name="nombre" autocomplete="name" required maxlength="120" placeholder="Tu nombre"></div>
    <div class="field"><label for="whatsapp">WhatsApp con clave de país *</label><input id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" required maxlength="25" placeholder="+52 56 0000 0000"></div>
@@ -43,7 +44,8 @@ form{background:#fff;padding:32px;border-radius:18px;box-shadow:0 8px 30px rgba(
  </form>
 </main>
 <footer>Traveler Club · Cancún, Quintana Roo · RNT-26-QROO-001681</footer>
-<script>\nconst form=document.getElementById('leadForm'), start=document.getElementById('inicio'), end=document.getElementById('fin'), statusBox=document.getElementById('status'), submitButton=form.querySelector('button[type="submit"]');
+<script>
+const form=document.getElementById('leadForm'), start=document.getElementById('inicio'), end=document.getElementById('fin'), statusBox=document.getElementById('status'), submitButton=form.querySelector('button[type="submit"]');
 start.addEventListener('change',()=>{end.min=start.value;if(end.value&&end.value<start.value)end.value='';});
 form.addEventListener('submit',async e=>{
  e.preventDefault();
@@ -66,6 +68,7 @@ form.addEventListener('submit',async e=>{
   statusBox.textContent=error.message||'No fue posible enviar la solicitud. Inténtalo más tarde o escríbenos a contacto@traveler-club.com.';
   statusBox.style.background='#fff0ed';statusBox.style.color='#8a3024';
  }finally{submitButton.disabled=false;submitButton.textContent='Enviar solicitud de cotización';}
-});\n</script>
+});
+</script>
 </body>
 </html>
