@@ -11,7 +11,7 @@ header{background:#fff;padding:14px 7%;display:flex;align-items:center;justify-c
 .brand{display:flex;align-items:center;gap:12px}.brand img{height:48px}.brand strong{display:block;color:#1e3a5f;font-size:21px}.brand small{color:#f28b30;font-style:italic}
 .back{color:#1e3a5f;text-decoration:none;font-weight:700;border:1px solid #dce3eb;padding:10px 16px;border-radius:22px}
 main{max-width:900px;margin:42px auto;padding:0 18px}.intro{text-align:center;margin-bottom:28px}.eyebrow{color:#f28b30;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;font-size:12px}.intro h1{color:#1e3a5f;font-size:34px;margin:10px 0}.intro p{color:#657386;line-height:1.6;max-width:650px;margin:auto}
-form{background:#fff;padding:32px;border-radius:18px;box-shadow:0 8px 30px rgba(30,58,95,.08)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.field{display:flex;flex-direction:column;gap:7px}.full{grid-column:1/-1}label{font-size:13px;font-weight:700;color:#34465c}input,select,textarea{width:100%;padding:13px 14px;border:1px solid #d9e1e9;border-radius:9px;font:inherit;color:#263445;background:#fff}input:focus,select:focus,textarea:focus{outline:2px solid #b8d5f2;border-color:#1e3a5f}textarea{min-height:100px;resize:vertical}.checks{margin-top:20px;display:grid;gap:12px}.check{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#536273;line-height:1.5}.check input{width:auto;margin-top:3px}.submit{margin-top:24px;width:100%;padding:15px;background:#1e3a5f;color:#fff;border:0;border-radius:28px;font-weight:700;font-size:16px;cursor:pointer}.submit:hover{background:#294d78}.note{font-size:12px;color:#778394;line-height:1.5;margin-top:16px}.status{display:none;margin-top:18px;padding:14px;border-radius:10px;background:#fff7e9;color:#72501c;font-size:14px;line-height:1.5}footer{text-align:center;padding:24px;color:#7b8795;font-size:12px}
+form{background:#fff;padding:32px;border-radius:18px;box-shadow:0 8px 30px rgba(30,58,95,.08)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.field{display:flex;flex-direction:column;gap:7px}.full{grid-column:1/-1}label{font-size:13px;font-weight:700;color:#34465c}input,select,textarea{width:100%;padding:13px 14px;border:1px solid #d9e1e9;border-radius:9px;font:inherit;color:#263445;background:#fff}input:focus,select:focus,textarea:focus{outline:2px solid #b8d5f2;border-color:#1e3a5f}textarea{min-height:100px;resize:vertical}.checks{margin-top:20px;display:grid;gap:12px}.check{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#536273;line-height:1.5}.check input{width:auto;margin-top:3px}.submit{margin-top:24px;width:100%;padding:15px;background:#1e3a5f;color:#fff;border:0;border-radius:28px;font-weight:700;font-size:16px;cursor:pointer}.submit:hover{background:#294d78}.note{font-size:12px;color:#778394;line-height:1.5;margin-top:16px}.status{display:none;margin-top:18px;padding:14px;border-radius:10px;background:#fff7e9;color:#72501c;font-size:14px;line-height:1.5}
 @media(max-width:650px){header{padding:12px 16px}.brand img{height:40px}.brand strong{font-size:18px}.back{font-size:12px;padding:9px 11px}main{margin:28px auto}.intro h1{font-size:28px}form{padding:22px 17px}.grid{grid-template-columns:1fr}.full{grid-column:auto}}
 </style>
 </head>
@@ -28,6 +28,7 @@ form{background:#fff;padding:32px;border-radius:18px;box-shadow:0 8px 30px rgba(
    <div class="field"><label for="nombre">Nombre completo *</label><input id="nombre" name="nombre" autocomplete="name" required maxlength="120" placeholder="Tu nombre"></div>
    <div class="field"><label for="whatsapp">WhatsApp con clave de país *</label><input id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" required maxlength="25" placeholder="+52 56 0000 0000"></div>
    <div class="field"><label for="email">Correo electrónico *</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="160" placeholder="nombre@correo.com"></div>
+   <div class="field"><label for="email_confirmacion">Confirma tu correo electrónico *</label><input id="email_confirmacion" name="email_confirmacion" type="email" autocomplete="email" required maxlength="160" placeholder="Escribe nuevamente tu correo"></div>
    <div class="field"><label for="destino">Destino de interés *</label><input id="destino" name="destino" required maxlength="160" placeholder="Ej. Cancún, Disney, Europa..."></div>
    <div class="field"><label for="viajeros">Número de viajeros *</label><select id="viajeros" name="viajeros" required><option value="">Selecciona</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8 o más</option></select></div>
    <div class="field"><label for="inicio">Fecha de inicio *</label><input id="inicio" name="fecha_inicio" type="date" required></div>
@@ -45,15 +46,24 @@ form{background:#fff;padding:32px;border-radius:18px;box-shadow:0 8px 30px rgba(
 </main>
 <footer>Traveler Club · Cancún, Quintana Roo · RNT-26-QROO-001681</footer>
 <script>
-const form=document.getElementById('leadForm'), start=document.getElementById('inicio'), end=document.getElementById('fin'), statusBox=document.getElementById('status'), submitButton=form.querySelector('button[type="submit"]');
+const form=document.getElementById('leadForm'), start=document.getElementById('inicio'), end=document.getElementById('fin'), statusBox=document.getElementById('status'), submitButton=form.querySelector('button[type="submit"]'), emailInput=document.getElementById('email'), emailConfirm=document.getElementById('email_confirmacion');
 start.addEventListener('change',()=>{end.min=start.value;if(end.value&&end.value<start.value)end.value='';});
+function validateEmailMatch(){
+ const matches=emailInput.value.trim().toLowerCase()===emailConfirm.value.trim().toLowerCase();
+ emailConfirm.setCustomValidity(matches?'':'Los correos electrónicos no coinciden. Revísalos.');
+ return matches;
+}
+emailInput.addEventListener('input',validateEmailMatch);
+emailConfirm.addEventListener('input',validateEmailMatch);
 form.addEventListener('submit',async e=>{
  e.preventDefault();
+ validateEmailMatch();
  if(!form.reportValidity())return;
  if(end.value<start.value){end.setCustomValidity('La fecha de regreso no puede ser anterior a la fecha de inicio.');end.reportValidity();end.setCustomValidity('');return;}
  if(document.getElementById('website').value)return;
  const data=Object.fromEntries(new FormData(form).entries());
  delete data.website;
+ delete data.email_confirmacion;
  data.privacy_consent=document.getElementById('privacidad').checked;
  data.whatsapp_consent=document.getElementById('waConsent').checked;
  statusBox.style.display='block';statusBox.textContent='Enviando tu solicitud de forma segura…';submitButton.disabled=true;submitButton.textContent='Enviando…';
@@ -61,8 +71,8 @@ form.addEventListener('submit',async e=>{
   const response=await fetch('/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
   const result=await response.json();
   if(!response.ok)throw new Error(result.error||'No pudimos registrar tu solicitud. Inténtalo nuevamente.');
-  form.reset();end.min='';
-  statusBox.textContent='¡Gracias! Tu solicitud quedó registrada. En breve nos pondremos en contacto contigo. Si no recibes el correo de confirmación, revisa tu carpeta de spam.';
+  form.reset();end.min='';emailConfirm.setCustomValidity('');
+  statusBox.textContent=result.email_status==='enviado'?'¡Gracias! Tu solicitud quedó registrada y enviamos un correo de confirmación.':'¡Gracias! Tu solicitud quedó registrada. Nuestro equipo dará seguimiento; el correo de confirmación aún no está disponible.';
   statusBox.style.background='#eaf7ef';statusBox.style.color='#245b38';
  }catch(error){
   statusBox.textContent=error.message||'No fue posible enviar la solicitud. Inténtalo más tarde o escríbenos a contacto@traveler-club.com.';
