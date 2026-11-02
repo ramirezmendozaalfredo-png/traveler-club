@@ -63,7 +63,7 @@ form.addEventListener('submit',async e=>{
  if(document.getElementById('website').value)return;
  const data=Object.fromEntries(new FormData(form).entries());
  delete data.website;
- delete data.email_confirmacion;
+
  data.privacy_consent=document.getElementById('privacidad').checked;
  data.whatsapp_consent=document.getElementById('waConsent').checked;
  statusBox.style.display='block';statusBox.textContent='Enviando tu solicitud de forma segura…';submitButton.disabled=true;submitButton.textContent='Enviando…';
