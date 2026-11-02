@@ -14,6 +14,8 @@ export async function onRequestPost({ request, env }) {
   }
   const email = body.email.trim().toLowerCase();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ error: "Revisa el correo electrónico." }, 400);
+  const emailConfirmation = typeof body.email_confirmacion === "string" ? body.email_confirmacion.trim().toLowerCase() : "";
+  if (!emailConfirmation || emailConfirmation !== email) return json({ error: "Los correos electrónicos no coinciden. Revísalos." }, 400);
   if (body.fecha_fin < body.fecha_inicio) return json({ error: "La fecha de regreso no puede ser anterior a la fecha de inicio." }, 400);
 
   const id = crypto.randomUUID();
