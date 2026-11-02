@@ -57,11 +57,13 @@ export async function onRequestPost({ request, env }) {
   }
 
   // Optional private Apps Script webhook. It appends one row to Google Sheets.
-  if (env.SHEETS_WEBHOOK_URL && env.SHEETS_WEBHOOK_SECRET) {
+  // Accept both variable names to remain compatible with existing Cloudflare settings.
+  const sheetsWebhookSecret = env.SHEETS_WEBHOOK_SECRET || env.SHEETS_WEBHOOK_SECRETS;
+  if (env.SHEETS_WEBHOOK_URL && sheetsWebhookSecret) {
     try {
       const webhookUrl = new URL(env.SHEETS_WEBHOOK_URL);
       // Apps Script Web Apps expose query parameters through e.parameter.
-      webhookUrl.searchParams.set("token", env.SHEETS_WEBHOOK_SECRET);
+      webhookUrl.searchParams.set("token", sheetsWebhookSecret);
       const sheetsResponse = await fetch(webhookUrl.toString(), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
