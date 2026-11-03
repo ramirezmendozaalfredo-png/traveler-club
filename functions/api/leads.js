@@ -48,13 +48,13 @@ export async function onRequestPost({ request, env }) {
   if (env.RESEND_API_KEY && env.EMAIL_FROM) {
     const customer = await sendEmail(env, {
       to: [lead.email], subject: "Recibimos tu solicitud de viaje | Traveler Club",
-      html: `<p>Hola ${escapeHtml(lead.nombre)},</p><p>Hemos recibido tu solicitud de cotización para <strong>${escapeHtml(lead.destino)}</strong>.</p><p>Nuestro equipo de Traveler Club revisará los detalles y se pondrá en contacto contigo.</p><p>Gracias por confiar en Traveler Club.<br>Las mejores experiencias de tu vida.</p>`
+      html: `<div style="text-align:center;padding:8px 0 22px"><img src="https://traveler-club.com/traveler-club-solutions.png" alt="Traveler Club Solutions" width="220" style="display:block;width:220px;max-width:100%;height:auto;margin:0 auto"></div><p>Hola ${escapeHtml(lead.nombre)},</p><p>Hemos recibido tu solicitud de cotización para <strong>${escapeHtml(lead.destino)}</strong>.</p><p>Nuestro equipo de Traveler Club revisará los detalles y se pondrá en contacto contigo.</p><p>Gracias por confiar en Traveler Club.<br>Las mejores experiencias de tu vida.</p>`
     });
     lead.email_status = customer ? "enviado" : "error";
     await env.DB.prepare("UPDATE leads SET email_status = ? WHERE id = ?").bind(lead.email_status, id).run();
     await sendEmail(env, {
       to: ["contacto@traveler-club.com"], subject: "Nuevo prospecto web: " + lead.nombre,
-      html: `<h2>Nuevo prospecto desde la web</h2><p><b>Nombre:</b> ${escapeHtml(lead.nombre)}</p><p><b>WhatsApp:</b> ${escapeHtml(lead.whatsapp)}</p><p><b>Correo:</b> ${escapeHtml(lead.email)}</p><p><b>Destino:</b> ${escapeHtml(lead.destino)}</p><p><b>Viajeros:</b> ${escapeHtml(lead.viajeros)}</p><p><b>Fechas:</b> ${escapeHtml(lead.fecha_inicio)} al ${escapeHtml(lead.fecha_fin)}</p><p><b>Notas:</b> ${escapeHtml(lead.mensaje)}</p><p><b>Permite WhatsApp:</b> ${lead.whatsapp_consent ? "Sí" : "No"}</p><p><b>ID:</b> ${id}</p>`
+      html: `<div style="text-align:center;padding:8px 0 22px"><img src="https://traveler-club.com/traveler-club-solutions.png" alt="Traveler Club Solutions" width="220" style="display:block;width:220px;max-width:100%;height:auto;margin:0 auto"></div><h2>Nuevo prospecto desde la web</h2><p><b>Nombre:</b> ${escapeHtml(lead.nombre)}</p><p><b>WhatsApp:</b> ${escapeHtml(lead.whatsapp)}</p><p><b>Correo:</b> ${escapeHtml(lead.email)}</p><p><b>Destino:</b> ${escapeHtml(lead.destino)}</p><p><b>Viajeros:</b> ${escapeHtml(lead.viajeros)}</p><p><b>Fechas:</b> ${escapeHtml(lead.fecha_inicio)} al ${escapeHtml(lead.fecha_fin)}</p><p><b>Notas:</b> ${escapeHtml(lead.mensaje)}</p><p><b>Permite WhatsApp:</b> ${lead.whatsapp_consent ? "Sí" : "No"}</p><p><b>ID:</b> ${id}</p>`
     });
   }
 
