@@ -274,9 +274,46 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 60px;
-            margin-top: 20px;
+            gap: 28px;
+            margin: 28px auto 0;
             flex-wrap: wrap;
+        }
+        .partner-logo-card {
+            min-width: 260px;
+            min-height: 112px;
+            padding: 22px 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+            border: 1px solid #e8edf2;
+            border-radius: 16px;
+            box-shadow: 0 5px 18px rgba(20,45,75,.07);
+        }
+        .partner-logo-card img {
+            display: block;
+            width: auto;
+            max-width: 250px;
+            max-height: 62px;
+            height: auto;
+            object-fit: contain;
+        }
+        .partner-logo-card.bedsonline-card {
+            background: #12345a;
+            border-color: #12345a;
+        }
+        .partner-logo-card.bedsonline-card img {
+            max-width: 250px;
+            max-height: 60px;
+        }
+        .partner-logo-card a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @media(max-width:600px) {
+            .partners-logos { gap: 16px; }
+            .partner-logo-card { width: min(100%,330px); min-width: 0; min-height: 100px; }
         }
 
         /* Contact / Call to Action */
@@ -566,12 +603,21 @@
     </section>
 
     <section class="partners-section">
-        <h3 class="section-title">El Mejor Respaldo</h3>
-        <p style="color: #666; max-width: 800px; margin: 0 auto; font-size: 14px;">Estamos soportados por los mejores en la industria: <strong>Expedia TAAP</strong> y <strong>Hotelbeds</strong>, lo que nos permite darte más opciones, mejores precios y experiencias de clase mundial.</p>
+        <h3 class="section-title">Plataformas con las que trabajamos</h3>
+        <p style="color: #666; max-width: 800px; margin: 0 auto; font-size: 14px;">Trabajamos con plataformas profesionales de reservación y distribución turística para consultar opciones de hospedaje y experiencias para nuestros viajeros.</p>
         <div class="partners-logos">
-            <span style="font-size: 22px; font-weight: bold; color: #1a365d;">🌐 Expedia TAAP</span>
-            <span style="font-size: 22px; font-weight: bold; color: #e53e3e;">🏨 hotelbeds</span>
+            <div class="partner-logo-card">
+                <a href="https://www.expedia.com/taap" target="_blank" rel="noopener noreferrer" aria-label="Conoce Expedia TAAP">
+                    <img src="https://innovation.expediagroup.com/content/unified/partner/live-copies/en-us/solutions/build-your-travel-experience/_jcr_content/root/container/container/tabs_copy/item_1/columns_container/column_0/columns_container/column_0/image_copy.coreimg.png/1788372847633/expedia-travel-agent-affiliate-program-logo-2x.png" alt="Logotipo oficial de Expedia TAAP" loading="lazy" decoding="async">
+                </a>
+            </div>
+            <div class="partner-logo-card bedsonline-card">
+                <a href="https://www.bedsonline.com/" target="_blank" rel="noopener noreferrer" aria-label="Conoce Bedsonline">
+                    <img src="https://cdn.hotelbeds.com/evolution/cms/prod/public/discover/2026-09/logo_white_final_4.png?VersionId=J0K882nceDf6hbQk19R1tiCv4Ux9QLrj" alt="Logotipo oficial de Bedsonline, powered by HBX Group" loading="lazy" decoding="async">
+                </a>
+            </div>
         </div>
+        <p style="color:#8490a0;font-size:11px;margin:18px auto 0;max-width:760px">Las marcas y logotipos pertenecen a sus respectivos titulares. Su inclusión identifica las plataformas utilizadas para consultar y reservar servicios turísticos.</p>
     </section>
 
     <section class="cta-section">
