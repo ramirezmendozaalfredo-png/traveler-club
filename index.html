@@ -822,8 +822,8 @@ section:not(.hero)>.back-top{display:flex;width:max-content}
       const original=originalTexts.get(node);
       const key=original.trim();
       const translated=lang==='es'?original:(dict[key]!==undefined?dict[key]:key);
-      const leading=original.match(/^\\s*/)?.[0]||'';
-      const trailing=original.match(/\\s*$/)?.[0]||'';
+      const leading=original.slice(0,original.length-original.trimStart().length);
+      const trailing=original.slice(original.trimEnd().length);
       node.nodeValue=leading+translated+trailing;
     }
     document.documentElement.lang=lang;
