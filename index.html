@@ -434,6 +434,19 @@ section:not(.hero)>.back-top{display:flex;width:max-content}
 @media(max-width:900px){.site-header{justify-content:center}.main-nav{order:3;flex-basis:100%;gap:2px}.main-nav a{font-size:11px;padding:7px 8px}.language-control{margin-left:auto}.founder-section{padding:55px 7%;grid-template-columns:minmax(210px,.8fr) minmax(280px,1.2fr)}}
 @media(max-width:650px){.site-header{padding:8px 4%;gap:8px}.site-header .brand-logo{height:48px}.main-nav{overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start;width:100%;padding:2px 0 7px}.main-nav a{white-space:nowrap}.language-control select{font-size:11px;padding:8px}.founder-section{grid-template-columns:1fr;padding:42px 7%;gap:34px}.founder-photo-wrap{width:min(82%,340px)}.founder-photo-wrap img{max-height:500px}.founder-copy{text-align:center}.founder-copy .section-title{font-size:25px}.founder-lead{font-size:17px}.experience-stats{justify-content:center}.experience-stats div{min-width:135px;max-width:46%;padding:12px}.experience-stats strong{font-size:29px}.founder-promise{text-align:left}}
 
+
+        .rnt-section{background:linear-gradient(135deg,#f5f8fb,#fff);padding:58px 8%}
+        .rnt-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(280px,.8fr) minmax(0,1.2fr);gap:clamp(28px,5vw,64px);align-items:center;text-align:left}
+        .rnt-copy .section-title{display:block;margin:8px 0 18px;font-size:clamp(24px,3vw,32px)}
+        .rnt-eyebrow{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#d77d2d}
+        .rnt-copy>p{color:#536273;font-size:15px;line-height:1.8;margin:0 0 15px}
+        .rnt-copy .rnt-folio{color:#1e3a5f;font-size:16px;margin-top:22px}
+        .rnt-validity{font-size:12px!important;color:#7b8795!important}
+        .rnt-certificate{display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;padding:12px;background:#fff;border:1px solid #e5ebf1;border-radius:16px;box-shadow:0 12px 32px rgba(20,45,75,.10);overflow:hidden;text-decoration:none}
+        .rnt-certificate img{width:100%;height:100%;object-fit:contain}
+        .rnt-image-fallback{display:none;color:#1e3a5f;font-size:14px;font-weight:700;text-align:center}
+        .rnt-image-pending .rnt-image-fallback{display:block}
+        @media(max-width:760px){.rnt-section{padding:44px 7%}.rnt-inner{grid-template-columns:1fr;gap:24px}.rnt-copy{text-align:center}.rnt-copy .section-title{font-size:26px}}
         .photo-credit{margin:14px auto 0;text-align:center;font-size:10px;color:#8995a3;letter-spacing:.2px}
     </style>
 </head>
@@ -442,7 +455,7 @@ section:not(.hero)>.back-top{display:flex;width:max-content}
     <header id="top" class="site-header">
   <div class="brand-container"><a href="#inicio" aria-label="Traveler Club Solutions, inicio"><img src="/traveler-club-solutions.png" alt="Traveler Club Solutions" class="brand-logo"></a></div>
   <nav class="main-nav" aria-label="Navegación principal">
-    <a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#riviera">Riviera Maya</a><a href="#destinos">Destinos</a><a href="#sobre-mi">Sobre mí</a><a href="#experiencias">Opiniones</a><a href="#preguntas">FAQ</a><a href="#contacto">Contacto</a>
+    <a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#riviera">Riviera Maya</a><a href="#destinos">Destinos</a><a href="#sobre-mi">Sobre mí</a><a href="#experiencias">Opiniones</a><a href="#registro-turistico">Registro RNT</a><a href="#preguntas">FAQ</a><a href="#contacto">Contacto</a>
   </nav>
   <label class="language-control"><span class="sr-only">Idioma</span><select id="languageSelect" aria-label="Seleccionar idioma"><option value="es">ES · Español</option><option value="en">EN · English</option><option value="fr">FR · Français</option></select></label>
 </header>
@@ -669,6 +682,22 @@ section:not(.hero)>.back-top{display:flex;width:max-content}
         <p style="color:#8490a0;font-size:11px;margin:18px auto 0;max-width:760px">Las marcas y logotipos pertenecen a sus respectivos titulares. Su inclusión identifica las plataformas utilizadas para consultar y reservar servicios turísticos.</p>
     </section>
 
+    <section class="rnt-section" id="registro-turistico">
+      <div class="rnt-inner">
+        <div class="rnt-copy">
+          <span class="rnt-eyebrow">Formalidad y confianza</span>
+          <h3 class="section-title">Registro Nacional de Turismo</h3>
+          <p>Traveler Club está inscrita en el Registro Nacional de Turismo como prestadora de servicios turísticos en la categoría de agencia de viajes. Este registro oficial permite identificar al prestador y consultar sus datos, y refleja nuestro compromiso con la formalidad, la transparencia y el cumplimiento de las disposiciones aplicables al sector turístico.</p>
+          <p class="rnt-folio">Folio: <strong>RNT-26-QROO-001681</strong></p>
+          <p class="rnt-validity">Inscripción: 2 de julio de 2026 · Vigencia indicada en el certificado: 2 de julio de 2028.</p>
+        </div>
+        <a class="rnt-certificate" href="/traveler-club-rnt.webp" target="_blank" rel="noopener noreferrer" aria-label="Abrir certificado del Registro Nacional de Turismo">
+          <img src="/traveler-club-rnt.webp" alt="Certificado oficial de inscripción de Traveler Club al Registro Nacional de Turismo, folio RNT-26-QROO-001681" loading="lazy" decoding="async" onerror="this.style.display='none';this.parentElement.classList.add('rnt-image-pending')">
+          <span class="rnt-image-fallback">Certificado oficial RNT · Folio RNT-26-QROO-001681</span>
+        </a>
+      </div>
+    </section>
+
     <section class="cta-section" id="contacto">
         <h3 class="section-title">¡Planea tu próximo viaje hoy!</h3>
         <div class="cta-buttons">
@@ -679,7 +708,6 @@ section:not(.hero)>.back-top{display:flex;width:max-content}
                 <span style="font-size: 18px;">✉️</span> contacto@traveler-club.com
             </a>
         </div>
-        <p style="margin-top: 18px; color: #1e3a5f; font-size: 14px; font-weight: 600;">Registro Nacional Turístico RNT-26-QROO-001681</p>
     </section>
 
     <footer>
