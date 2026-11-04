@@ -3,8 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Solicita una cotización de viaje con Traveler Club. Hoteles, vuelos, paquetes, cruceros y experiencias.">
-<title>Solicita tu cotización | Traveler Club</title>
+<meta name="description" content="Cotiza hoteles, paquetes vacacionales, tours, traslados y viajes con Traveler Club Solutions, agencia de viajes con atención personalizada en Cancún y Riviera Maya.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://traveler-club.com/cotizar/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Traveler Club Solutions">
+<meta property="og:title" content="Cotiza tu viaje | Traveler Club Solutions">
+<meta property="og:description" content="Solicita opciones de hoteles, paquetes, tours, traslados y viajes nacionales e internacionales.">
+<title>Cotiza tu viaje | Traveler Club Solutions</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#f4f5f7;color:#263445;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
 header{background:#fff;padding:14px 7%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e8edf2}
@@ -31,7 +37,7 @@ form{background:#fff;padding:32px;border-radius:18px;box-shadow:0 8px 30px rgba(
  <a class="back" href="/">← Página principal</a>
 </header>
 <main>
- <div class="intro"><div class="eyebrow">Tu próximo viaje comienza aquí</div><h1>Solicita tu cotización</h1><p>Comparte los detalles de tu viaje. Nuestro equipo revisará tu solicitud y se pondrá en contacto contigo para preparar una propuesta.</p></div>
+ <div class="intro"><div class="eyebrow">Traveler Club Solutions · Agencia de viajes</div><h1>Cotiza tu viaje en Cancún, Riviera Maya y el mundo</h1><p>Comparte los detalles de tu viaje. Revisaremos opciones de hoteles, paquetes vacacionales, tours, traslados, cruceros y experiencias para preparar una propuesta de acuerdo con tus necesidades.</p></div>
  <form id="leadForm">
   <div style="position:absolute;left:-10000px" aria-hidden="true"><label for="website">No llenar</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
   <div class="grid">
@@ -54,7 +60,7 @@ form{background:#fff;padding:32px;border-radius:18px;box-shadow:0 8px 30px rgba(
   <div class="status" id="status" role="status"></div>
  </form>
 </main>
-<footer>Traveler Club · Cancún, Quintana Roo · RNT-26-QROO-001681</footer>
+<footer>Traveler Club Solutions · Cancún, Quintana Roo · RNT-26-QROO-001681</footer>
 <script>
 const form=document.getElementById('leadForm'), start=document.getElementById('inicio'), end=document.getElementById('fin'), statusBox=document.getElementById('status'), submitButton=form.querySelector('button[type="submit"]'), emailInput=document.getElementById('email'), emailConfirm=document.getElementById('email_confirmacion');
 start.addEventListener('change',()=>{end.min=start.value;if(end.value&&end.value<start.value)end.value='';});
