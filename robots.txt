@@ -1,0 +1,31 @@
+# Traveler Club Solutions - reglas de rastreo
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Rastreo para resultados de búsqueda con IA
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Indexación de buscadores tradicionales y experiencias basadas en sus índices
+User-agent: Googlebot
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
+# Los rastreadores de entrenamiento se mantienen separados de los de búsqueda.
+# Se permite búsqueda en ChatGPT y Claude sin conceder acceso a rastreo de entrenamiento.
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+Sitemap: https://traveler-club.com/sitemap.xml
