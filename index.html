@@ -403,17 +403,50 @@
 .reviews-toggle{margin-top:24px;background:#1e3a5f;color:#fff;border:0;border-radius:24px;padding:12px 24px;font-weight:700;cursor:pointer}
 @media(max-width:760px){.reviews-grid{grid-template-columns:1fr}.review-card{min-height:0}}
 
+    
+/* Navegación, presentación del fundador y jerarquía visual */
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+.site-header{position:sticky;top:0;z-index:1000;gap:18px;padding:10px 4%;box-shadow:0 4px 18px rgba(20,45,75,.08);flex-wrap:wrap}
+.site-header .brand-logo{height:58px}
+.site-header .brand-container{flex:0 0 auto}
+.main-nav{display:flex;align-items:center;justify-content:center;gap:7px;flex:1;flex-wrap:wrap}
+.main-nav a{color:#294663;text-decoration:none;font-size:12px;font-weight:700;padding:9px 10px;border-radius:18px;transition:background .2s,color .2s}
+.main-nav a:hover,.main-nav a:focus{background:#edf3f8;color:#e17d25}
+.language-control select{border:1px solid #dce4ec;border-radius:18px;background:#fff;color:#1e3a5f;padding:9px 11px;font-weight:700;font-size:12px;cursor:pointer}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+section:not(.hero){border-top:1px solid #e3e9ef;box-shadow:0 -5px 18px rgba(20,45,75,.025)}
+.founder-section{display:grid;grid-template-columns:minmax(250px, .8fr) minmax(320px,1.2fr);align-items:center;gap:clamp(28px,5vw,70px);padding:70px 10%;background:linear-gradient(135deg,#fff 0%,#f2f6fa 100%)}
+.founder-photo-wrap{max-width:440px;margin:auto;position:relative}
+.founder-photo-wrap:after{content:"";position:absolute;inset:14px -14px -14px 14px;border:2px solid #e9a15f;border-radius:20px;z-index:0}
+.founder-photo-wrap img{position:relative;z-index:1;display:block;width:100%;max-height:610px;object-fit:cover;object-position:center 28%;border-radius:18px;box-shadow:0 18px 42px rgba(20,45,75,.18);background:#e8eef3}
+.founder-copy{text-align:left;max-width:680px}
+.founder-copy .section-title{margin:8px 0 22px}
+.eyebrow{color:#d77d2d;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1.4px}
+.founder-lead{font-size:19px;line-height:1.6;color:#294663;font-weight:600;margin-bottom:24px}
+.experience-stats{display:flex;gap:18px;flex-wrap:wrap;margin:22px 0}
+.experience-stats div{display:flex;flex-direction:column;min-width:150px;padding:14px 18px;border-left:3px solid #e99a52;background:#fff;box-shadow:0 5px 18px rgba(20,45,75,.06);border-radius:0 10px 10px 0}
+.experience-stats strong{font-size:34px;line-height:1.1;color:#1e3a5f}
+.experience-stats span{font-size:12px;line-height:1.4;color:#637286;margin-top:5px}
+.founder-promise{color:#536273;line-height:1.8;font-size:15px;margin:18px 0 24px}
+.back-top{display:inline-flex;align-items:center;gap:7px;margin:28px auto 0;padding:9px 17px;border:1px solid #dce5ed;border-radius:22px;background:#fff;color:#1e3a5f;text-decoration:none;font-size:12px;font-weight:700;box-shadow:0 3px 10px rgba(20,45,75,.05)}
+.back-top:hover{background:#1e3a5f;color:#fff}
+section:not(.hero)>.back-top{display:flex;width:max-content}
+@media(max-width:900px){.site-header{justify-content:center}.main-nav{order:3;flex-basis:100%;gap:2px}.main-nav a{font-size:11px;padding:7px 8px}.language-control{margin-left:auto}.founder-section{padding:55px 7%;grid-template-columns:minmax(210px,.8fr) minmax(280px,1.2fr)}}
+@media(max-width:650px){.site-header{padding:8px 4%;gap:8px}.site-header .brand-logo{height:48px}.main-nav{overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start;width:100%;padding:2px 0 7px}.main-nav a{white-space:nowrap}.language-control select{font-size:11px;padding:8px}.founder-section{grid-template-columns:1fr;padding:42px 7%;gap:34px}.founder-photo-wrap{width:min(82%,340px)}.founder-photo-wrap img{max-height:500px}.founder-copy{text-align:center}.founder-copy .section-title{font-size:25px}.founder-lead{font-size:17px}.experience-stats{justify-content:center}.experience-stats div{min-width:135px;max-width:46%;padding:12px}.experience-stats strong{font-size:29px}.founder-promise{text-align:left}}
+
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="brand-container">
-            <img src="/traveler-club-solutions.png" alt="Traveler Club Solutions" class="brand-logo">
-        </div>
-    </header>
+    <header id="top" class="site-header">
+  <div class="brand-container"><a href="#inicio" aria-label="Traveler Club Solutions, inicio"><img src="/traveler-club-solutions.png" alt="Traveler Club Solutions" class="brand-logo"></a></div>
+  <nav class="main-nav" aria-label="Navegación principal">
+    <a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#riviera">Riviera Maya</a><a href="#destinos">Destinos</a><a href="#sobre-mi">Sobre mí</a><a href="#experiencias">Opiniones</a><a href="#preguntas">FAQ</a><a href="#contacto">Contacto</a>
+  </nav>
+  <label class="language-control"><span class="sr-only">Idioma</span><select id="languageSelect" aria-label="Seleccionar idioma"><option value="es">ES · Español</option><option value="en">EN · English</option><option value="fr">FR · Français</option></select></label>
+</header>
 
-    <section class="hero">
+    <section class="hero" id="inicio">
         <div class="hero-box">
             <h2>Tu próximo viaje comienza aquí</h2>
             <p>Somos Traveler Club Solutions, tu agencia de viajes con atención personalizada en Cancún y la Riviera Maya. Cotiza hoteles todo incluido, paquetes vacacionales, tours, traslados y viajes a los mejores destinos de México y el mundo.</p>
@@ -421,13 +454,25 @@
         </div>
     </section>
 
-    <div class="info-ribbon">
+    <div class="info-ribbon" id="confianza">
         <div class="ribbon-item">📍 Especialistas en Cancún y Riviera Maya</div>
         <div class="ribbon-item">🤝 Atención personalizada antes de reservar</div>
         <div class="ribbon-item">🧭 Opciones para tu viaje y presupuesto</div>
     </div>
 
-    <section class="section-container">
+    <section class="founder-section" id="sobre-mi">
+      <div class="founder-photo-wrap"><img id="founder-photo" alt="Alfredo Ramírez, fundador de Traveler Club Solutions, en una playa de la Riviera Maya" loading="lazy"></div>
+      <div class="founder-copy">
+        <span class="eyebrow">La experiencia detrás de cada viaje</span>
+        <h3 class="section-title">Experiencia que inspira confianza</h3>
+        <p class="founder-lead">Soy Alfredo Ramírez y pongo mi experiencia al servicio de cada viajero que confía en Traveler Club Solutions.</p>
+        <div class="experience-stats"><div><strong>25+</strong><span>años de trayectoria profesional</span></div><div><strong>10+</strong><span>años en el sector turístico de la Riviera Maya</span></div></div>
+        <p class="founder-promise">Quiero que disfrutes tu viaje desde el primer contacto. Por eso recibirás una atención cálida, cercana y transparente; estaré pendiente de tus dudas y del seguimiento de tu solicitud. Detrás de Traveler Club Solutions hay un responsable que da la cara por el servicio y cuida cada detalle para que te sientas acompañado antes y durante tu viaje.</p>
+        <a href="/cotizar/" class="btn-quote">Hablemos de tu próximo viaje</a>
+      </div>
+    </section>
+
+    <section class="section-container" id="servicios">
         <h3 class="section-title">Servicios que Ofrecemos</h3>
         <div class="services-grid">
             <div class="service-card">
@@ -469,7 +514,7 @@
     </section>
 
 
-    <section class="section-container">
+    <section class="section-container" id="riviera">
         <h3 class="section-title">Cancún y la Riviera Maya</h3>
         <p style="max-width:780px;margin:-18px auto 28px;color:#536273;line-height:1.6">Descubre el Caribe mexicano: playas de aguas turquesa, islas, cultura maya y experiencias inolvidables. Elige tu destino y cotiza tu viaje con Traveler Club Solutions.</p>
         <div class="destinations-grid">
@@ -497,7 +542,7 @@
         <a href="/cotizar/" class="btn-quote">Cotiza tu viaje en Quintana Roo</a>
     </section>
 
-    <section class="section-container" style="background-color: #fff;">
+    <section class="section-container" id="destinos" style="background-color: #fff;">
         <h3 class="section-title">Destinos de Clase Mundial</h3>
         <p style="max-width:780px;margin:-18px auto 28px;color:#536273;line-height:1.6">Además de nuestros viajes nacionales e internacionales, conoce Quintana Roo con una agencia de viajes en Cancún que te ayuda a comparar hospedajes, actividades y experiencias para diseñar tu estancia.</p>
         <div class="destinations-grid">
@@ -547,7 +592,7 @@
 
 
 
-    <section class="section-container reviews-section" aria-labelledby="reviews-title">
+    <section class="section-container reviews-section" id="experiencias" aria-labelledby="reviews-title">
         <h3 class="section-title" id="reviews-title">Experiencias de viajeros</h3>
         <p class="reviews-intro">La confianza se construye con experiencias reales. Estamos preparando este espacio para compartir opiniones auténticas de viajeros que hayan reservado con Traveler Club Solutions. Las reseñas se publicarán con autorización y sin alterar sus comentarios.</p>
         <div class="reviews-grid" id="reviewsGrid">
@@ -574,7 +619,7 @@
     </script>
 
 
-    <section class="section-container" style="background:#f4f5f7">
+    <section class="section-container" id="preguntas" style="background:#f4f5f7">
       <h3 class="section-title">Preguntas frecuentes sobre Traveler Club Solutions</h3>
       <div style="max-width:850px;margin:0 auto;text-align:left;display:grid;gap:14px">
         <details class="service-card"><summary><strong>¿Traveler Club Solutions es una agencia de viajes en Cancún?</strong></summary><p>Traveler Club Solutions ofrece asesoría y cotización de servicios turísticos con enfoque en Cancún, Quintana Roo y la Riviera Maya, además de destinos nacionales e internacionales.</p></details>
@@ -596,13 +641,13 @@
     }
     </script>
 
-    <section class="quote-strip">
+    <section class="quote-strip" id="cotizar">
         <h3>Diseñemos tu próximo viaje</h3>
         <p>Cuéntanos a dónde quieres viajar, cuándo y cuántas personas te acompañan. Prepararemos una propuesta de acuerdo con tus necesidades.</p>
         <a href="/cotizar/" class="btn-reserve">Cotiza tu viaje aquí</a>
     </section>
 
-    <section class="partners-section">
+    <section class="partners-section" id="plataformas">
         <h3 class="section-title">Plataformas con las que trabajamos</h3>
         <p style="color: #666; max-width: 800px; margin: 0 auto; font-size: 14px;">Trabajamos con plataformas profesionales de reservación y distribución turística para consultar opciones de hospedaje y experiencias para nuestros viajeros.</p>
         <div class="partners-logos">
@@ -620,7 +665,7 @@
         <p style="color:#8490a0;font-size:11px;margin:18px auto 0;max-width:760px">Las marcas y logotipos pertenecen a sus respectivos titulares. Su inclusión identifica las plataformas utilizadas para consultar y reservar servicios turísticos.</p>
     </section>
 
-    <section class="cta-section">
+    <section class="cta-section" id="contacto">
         <h3 class="section-title">¡Planea tu próximo viaje hoy!</h3>
         <div class="cta-buttons">
             <a href="https://wa.me/525620920944" target="_blank" class="btn-contact btn-wa">
@@ -648,6 +693,70 @@
  </span>
  <span class="whatsapp-float-label">WhatsApp</span>
 </a>
+
+
+<script>
+(function(){
+  const image=document.getElementById('founder-photo');
+  fetch('/alfredo-traveler.webp.b64').then(r=>{if(!r.ok)throw new Error('photo unavailable');return r.text()})
+    .then(data=>{image.src='data:image/webp;base64,'+data.trim();})
+    .catch(()=>{image.alt='Alfredo Ramírez, fundador de Traveler Club Solutions';image.style.minHeight='320px';});
+
+  document.querySelectorAll('body > section').forEach((section,index)=>{
+    if(section.classList.contains('hero')) return;
+    const link=document.createElement('a');
+    link.className='back-top';link.href='#top';link.textContent='↑ Volver al inicio';
+    link.setAttribute('aria-label','Volver al inicio de la página');
+    section.appendChild(link);
+  });
+
+  const translations={
+    en:{
+      'Inicio':'Home','Servicios':'Services','Riviera Maya':'Riviera Maya','Destinos':'Destinations','Sobre mí':'About me','Opiniones':'Reviews','FAQ':'FAQ','Contacto':'Contact',
+      'Tu próximo viaje comienza aquí':'Your next journey starts here',
+      'Somos Traveler Club Solutions, tu agencia de viajes con atención personalizada en Cancún y la Riviera Maya. Cotiza hoteles todo incluido, paquetes vacacionales, tours, traslados y viajes a los mejores destinos de México y el mundo.':'We are Traveler Club Solutions, your travel agency offering personalized service in Cancún and the Riviera Maya. Request a quote for all-inclusive hotels, vacation packages, tours, transfers and trips to destinations in Mexico and around the world.',
+      'Cotiza tu viaje gratis':'Get a free travel quote','Especialistas en Cancún y Riviera Maya':'Cancún and Riviera Maya specialists','Atención personalizada antes de reservar':'Personalized service before you book','Opciones para tu viaje y presupuesto':'Options for your trip and budget',
+      'La experiencia detrás de cada viaje':'The experience behind every journey','Experiencia que inspira confianza':'Experience you can trust',
+      'Soy Alfredo Ramírez y pongo mi experiencia al servicio de cada viajero que confía en Traveler Club Solutions.':'I am Alfredo Ramírez, and I put my experience at the service of every traveler who trusts Traveler Club Solutions.',
+      'años de trayectoria profesional':'years of professional experience','años en el sector turístico de la Riviera Maya':'years in Riviera Maya tourism',
+      'Quiero que disfrutes tu viaje desde el primer contacto. Por eso recibirás una atención cálida, cercana y transparente; estaré pendiente de tus dudas y del seguimiento de tu solicitud. Detrás de Traveler Club Solutions hay un responsable que da la cara por el servicio y cuida cada detalle para que te sientas acompañado antes y durante tu viaje.':'I want you to enjoy your trip from the very first contact. You will receive warm, personal and transparent service. I will be available for your questions and follow up on your request. There is a dedicated person behind Traveler Club Solutions, personally accountable for the service and attentive to every detail so you feel supported before and during your trip.',
+      'Hablemos de tu próximo viaje':'Let’s talk about your next trip','Servicios que Ofrecemos':'Our Services','Hospedaje':'Accommodation','Vuelos':'Flights','Paquetes':'Packages','Cruceros':'Cruises','Autos':'Car rentals','Tours':'Tours','Seguros':'Travel insurance',
+      'Cancún y la Riviera Maya':'Cancún and the Riviera Maya','Destinos de Clase Mundial':'World-Class Destinations','Experiencias de viajeros':'Traveler Experiences',
+      'Preguntas frecuentes sobre Traveler Club Solutions':'Frequently Asked Questions about Traveler Club Solutions','Diseñemos tu próximo viaje':'Let’s plan your next trip',
+      'Plataformas con las que trabajamos':'Platforms we work with','¡Planea tu próximo viaje hoy!':'Plan your next trip today!','Cotiza tu viaje aquí':'Get your travel quote here','Ver 17 espacios más':'See 17 more spaces','↑ Volver al inicio':'↑ Back to top'
+    },
+    fr:{
+      'Inicio':'Accueil','Servicios':'Services','Riviera Maya':'Riviera Maya','Destinos':'Destinations','Sobre mí':'À propos','Opiniones':'Avis','FAQ':'FAQ','Contacto':'Contact',
+      'Tu próximo viaje comienza aquí':'Votre prochain voyage commence ici',
+      'Somos Traveler Club Solutions, tu agencia de viajes con atención personalizada en Cancún y la Riviera Maya. Cotiza hoteles todo incluido, paquetes vacacionales, tours, traslados y viajes a los mejores destinos de México y el mundo.':'Nous sommes Traveler Club Solutions, votre agence de voyages avec un service personnalisé à Cancún et dans la Riviera Maya. Demandez un devis pour des hôtels tout compris, des forfaits, des excursions, des transferts et des voyages au Mexique et dans le monde.',
+      'Cotiza tu viaje gratis':'Demandez un devis gratuit','Especialistas en Cancún y Riviera Maya':'Spécialistes de Cancún et de la Riviera Maya','Atención personalizada antes de reservar':'Un service personnalisé avant votre réservation','Opciones para tu viaje y presupuesto':'Des options adaptées à votre voyage et à votre budget',
+      'La experiencia detrás de cada viaje':'L’expérience derrière chaque voyage','Experiencia que inspira confianza':'Une expérience qui inspire confiance',
+      'Soy Alfredo Ramírez y pongo mi experiencia al servicio de cada viajero que confía en Traveler Club Solutions.':'Je suis Alfredo Ramírez et je mets mon expérience au service de chaque voyageur qui fait confiance à Traveler Club Solutions.',
+      'años de trayectoria profesional':'ans d’expérience professionnelle','años en el sector turístico de la Riviera Maya':'ans dans le secteur touristique de la Riviera Maya',
+      'Quiero que disfrutes tu viaje desde el primer contacto. Por eso recibirás una atención cálida, cercana y transparente; estaré pendiente de tus dudas y del seguimiento de tu solicitud. Detrás de Traveler Club Solutions hay un responsable que da la cara por el servicio y cuida cada detalle para que te sientas acompañado antes y durante tu viaje.':'Je souhaite que vous profitiez de votre voyage dès le premier contact. Vous bénéficierez d’un accueil chaleureux, attentif et transparent. Je resterai disponible pour répondre à vos questions et suivre votre demande. Chez Traveler Club Solutions, une personne est personnellement responsable du service et veille à chaque détail afin que vous soyez accompagné avant et pendant votre voyage.',
+      'Hablemos de tu próximo viaje':'Parlons de votre prochain voyage','Servicios que Ofrecemos':'Nos services','Hospedaje':'Hébergement','Vuelos':'Vols','Paquetes':'Forfaits','Cruceros':'Croisières','Autos':'Location de voitures','Tours':'Excursions','Seguros':'Assurance voyage',
+      'Cancún y la Riviera Maya':'Cancún et la Riviera Maya','Destinos de Clase Mundial':'Destinations de classe mondiale','Experiencias de viajeros':'Expériences des voyageurs',
+      'Preguntas frecuentes sobre Traveler Club Solutions':'Questions fréquentes sur Traveler Club Solutions','Diseñemos tu próximo viaje':'Préparons votre prochain voyage',
+      'Plataformas con las que trabajamos':'Plateformes avec lesquelles nous travaillons','¡Planea tu próximo viaje hoy!':'Préparez votre prochain voyage dès aujourd’hui !','Cotiza tu viaje aquí':'Demandez votre devis','Ver 17 espacios más':'Voir 17 autres espaces','↑ Volver al inicio':'↑ Retour en haut'
+    }
+  };
+  const language=document.getElementById('languageSelect');
+  function setLanguage(lang){
+    const dict=translations[lang]||{};
+    const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+    let node;
+    while(node=walker.nextNode()){
+      const original=node.nodeValue.trim();
+      if(dict[original]) node.nodeValue=node.nodeValue.replace(original,dict[original]);
+      else if(lang==='es' && node.parentElement && node.parentElement.dataset.originalText) node.nodeValue=node.parentElement.dataset.originalText;
+    }
+    document.documentElement.lang=lang;
+    const labels={es:'Español',en:'English',fr:'Français'};
+    language.setAttribute('aria-label','Language: '+labels[lang]);
+  }
+  language.addEventListener('change',()=>setLanguage(language.value));
+})();
+</script>
 
 </body>
 </html>
