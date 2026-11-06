@@ -63,6 +63,8 @@ form{background:#fff;padding:32px;border-radius:18px;box-shadow:0 8px 30px rgba(
 <footer>Traveler Club Solutions · Cancún, Quintana Roo · RNT-26-QROO-001681 · <a href="/sobre-traveler-club-solutions/" style="color:inherit">Conoce nuestra agencia</a></footer>
 <script>
 const form=document.getElementById('leadForm'), start=document.getElementById('inicio'), end=document.getElementById('fin'), statusBox=document.getElementById('status'), submitButton=form.querySelector('button[type="submit"]'), emailInput=document.getElementById('email'), emailConfirm=document.getElementById('email_confirmacion');
+const requestedDestination=new URLSearchParams(window.location.search).get('destino');
+if(requestedDestination){document.getElementById('destino').value=requestedDestination;}
 start.addEventListener('change',()=>{end.min=start.value;if(end.value&&end.value<start.value)end.value='';});
 function validateEmailMatch(){
  const matches=emailInput.value.trim().toLowerCase()===emailConfirm.value.trim().toLowerCase();
