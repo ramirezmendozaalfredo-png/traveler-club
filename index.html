@@ -738,9 +738,8 @@ section:not(.hero)>.back-top{display:flex;width:max-content}
 <script>
 (function(){
   const image=document.getElementById('founder-photo');
-  fetch('/alfredo-traveler.webp.b64').then(r=>{if(!r.ok)throw new Error('photo unavailable');return r.text()})
-    .then(data=>{image.src='data:image/webp;base64,'+data.trim();})
-    .catch(()=>{image.alt='Alfredo Ramírez, fundador de Traveler Club Solutions';image.style.minHeight='320px';});
+  image.src='/21256087_1794010018800284.jpeg';
+  image.alt='Alfredo Ramírez, fundador de Traveler Club Solutions';
 
   document.querySelectorAll('body > section').forEach((section,index)=>{
     if(section.classList.contains('hero')) return;
